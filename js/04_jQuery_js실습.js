@@ -13,7 +13,7 @@
             //<style> 클래스 명칭 .red{} .green{}
             if( name && email && messge){
                 // 모든 값이 채워져 있다면 성공 메세지를 초록색으로 표시
-                $("#status").addClass(#name)
+                $("#status").addClass("#name","문의가 정상적으로 접수되었습니다.").
                 $("#status").text("문의가 정상적으로 접수되었습니다.").css("color","green");
             }else{
                 $("#status").text("모든 항목을 입력해주세요 .").css("color","red");
