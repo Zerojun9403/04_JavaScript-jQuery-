@@ -24,51 +24,40 @@ function getCats() {
         (cat) =>
           `
             <div class ="photo-item">
-                <img src="${cat.url}>
+                <img src="${cat.url}">
                 <p>고양이 ID : ${cat.id}</p>
             </div>
             `
       )
     );
   });
-
-
+}
 // 문제 2: 강아지 사진 5장 가져오기
 function getDogs() {
   $("#result2").html(
     '<div class="loading">🐶 강아지 사진을 가져오는 중...</div>'
   );
-  $.get("https://api.thecatapi.com/v1/images/search?limit=3").done(function (
+  $.get("https://api.thedogapi.com/v1/images/search?limit=3").done(function (
     data
   ) {
-    // limit = 3장 이어도 무조건 10장 이 나오는 사이트!!
-    // 이럴 때 3장만 가져오는 방법
-    //.slice(시작할 인데스 번호, 종료하고 난 다음인데스 부터)
-    const threeCats = data.slice(0, 3);
-    $("#result1").html(
-      threeCats.map(
-        (cat) =>
+    const threeDogs = data.slice(0, 5);
+    $("#result2").html(
+      threeDogs.map(
+        (dog) =>
           `
+
+        <div class="photo-grid">
+        
+        
             <div class ="photo-item">
-                <img src="${cat.url}>
-                <p>고양이 ID : ${cat.id}</p>
+                <img src="${dog.url}">
+                <p>강아지 ID : ${dog.id}</p>
             </div>
+        </div>
             `
       )
     );
   });
-
-  // 여기에 코드 작성
-  // picsum.photos API 사용하거나 다른 강아지 API 사용
-  // 5장의 강아지 사진을 가져와서 표시하세요
-
-  /*
-            힌트:
-            0. slice() 이용해서 0번1부터 4번 까져오기
-            1. map 5개 배열 생성
-            2. 각각 다른 강아지 사진 URL 만들기
-            3. photo-grid 클래스와 photo-item 클래스 사용
-            */
 }
 
 // 문제 3: 선택한 동물 사진 가져오기
@@ -85,12 +74,27 @@ function getSelectedAnimal() {
   );
 
   // 여기에 코드 작성
-  // selected 값이 "cat"이면 고양이 사진 4장
-  // selected 값이 "dog"이면 강아지 사진 4장
-  // if문을 사용해서 조건에 따라 다른 사진 표시
+
+  $.get(`https://api.the${selected}api.com/v1/images/search?limit=3`).done(
+    function (data) {
+      const count = data.slice(0, 5);
+      $("#result3").html(
+        count.map(
+          (animal) =>
+            `
+          <div class="photo-item">
+            <img src="${animal.url}"/>
+             <p> ${selected} ID=${animal.id}</p>
+        </div>
+          `
+        )
+      );
+    }
+  );
 }
 
 // 문제 4: 원하는 개수만큼 고양이 사진 가져오기
+
 function getCatsWithCount() {
   const count = $("#photoCount").val();
 
@@ -105,7 +109,26 @@ function getCatsWithCount() {
 
   // 여기에 코드 작성
   // count 개수만큼 고양이 사진 가져오기
-  // Array.from({length: count}, (_, i) => ...) 패턴 사용
+
+  // map 사용
+  //join("") 마지막에 , 나 ` 실행되는것을 "" rkqtdmfh cjfl
+  $.get(`https://api.thecatapi.com/v1/images/search?limit=10`)
+    .done(function (data) {
+      const cats = data.slice(0, count);
+      $("#result4").html(
+        `<div class="photo-grid">
+      ${cats
+        .map(
+          (cat) =>
+            `<div class="photo-item">
+            <img src="${cat.url}" alt="고양이 사진"> 
+            </div>`
+        )
+        .join("")}
+      </div>`
+      );
+    })
+    .fail();
 }
 
 // 문제 5: 랜덤 동물 사진 갤러리
@@ -117,5 +140,19 @@ function getRandomGallery() {
   // 여기에 코드 작성
   // 고양이 4장 + 강아지 4장 = 총 8장
   // 두 배열을 합쳐서 하나의 갤러리로 표시
-  // concat()이나 spread operator(...) 사용 가능
+  //1.https://api.thecatapi.com/v1/images/search?limit=10
+  //2.https://api.thedogapi.com/v1/images/search?limit=10
+  animal("cat");
+  animal("dog");
+}
+
+function animal(동물이름) {
+  $.get(`https://api.the${동물이름}api.com/v1/images/search?limit=10`).done(
+    function (data) {
+      const count = data.slice(0, 5);
+      $("#result5").html(
+        $("#result5").html() + count.map((i) => `<img src="${i.url}">`)
+      );
+    }
+  );
 }
