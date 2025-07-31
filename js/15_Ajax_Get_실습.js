@@ -9,7 +9,7 @@ $(function () {
   $("#btn6").click(getPosts);
   $("#btn7").click(userList);
   $("#btn8").click(searchUser);
-  ${"#btn9"}click(selectAlbum);
+  $("#btn9").click(userList);
 });
 //문제 1 :  기본텍스트 데이터 가져오기
 // https://jsonplaceholder.typicode.com/posts/1
@@ -248,8 +248,8 @@ function selectAlbum() {
     $("result9").html(
       //data.map 형태로 map 내부 변수 이름은 photo 를 이용해서
 
-      //select 선택을 진행 할떄 fiflter 를 사용해라 만날수 있음 
-      // 주소값에서 작성된 모든 데이터를 조회할떄는 
+      //select 선택을 진행 할떄 fiflter 를 사용해라 만날수 있음
+      // 주소값에서 작성된 모든 데이터를 조회할떄는
       // fiflter 를 굳이 사용하지 않아도 됨~
       data
         //.filter((photo) => (photo.albumId = albumId))
@@ -259,8 +259,8 @@ function selectAlbum() {
             <p>${photo.ul}</p>
         `
         )
-        // title url 을 
-        // title url <strong>${title }</strong>
+      // title url 을
+      // title url <strong>${title }</strong>
       // <p>${ul }</p>
     );
   });
