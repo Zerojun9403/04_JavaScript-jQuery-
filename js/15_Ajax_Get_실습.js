@@ -8,7 +8,8 @@ $(function () {
   $("#btn5").click(errorFn);
   $("#btn6").click(getPosts);
   $("#btn7").click(userList);
-  $("#btn").click(searchUser);
+  $("#btn8").click(searchUser);
+  ${"#btn9"}click(selectAlbum);
 });
 //문제 1 :  기본텍스트 데이터 가져오기
 // https://jsonplaceholder.typicode.com/posts/1
@@ -222,17 +223,45 @@ function searchUser() {
   // 걸러낸 소비자들을 리스트 형태로 가지고 있기
   // map  이용해서 하나씩 꺼내기
   // #result8 에서 보여주기
-  $.get("https://jsonplaceholder.typicode.com/users")
-  .done(function (data) {
+  $.get("https://jsonplaceholder.typicode.com/users").done(function (data) {
     /* 1. 검색에 해당하는 사람들만 걸러내서 목록형태로 조회 */
     $("#result8").html(
       data
         .filter((user) => user.name == searchName)
-        .map((user) => 
-        `<p>${user.name}</p>
+        .map(
+          (user) =>
+            `<p>${user.name}</p>
         <p>${user.email}</p>
         `
         )
+    );
+  });
+}
+
+// 문제 9 : 선택된 항목에 따른 데이터 가져오기
+//https://jsonplaceholder.typicode.com/albums/{albumId}/photos?_limit=3
+function selectAlbum() {
+  const albumId = $("#albumId").val();
+  $.gat(
+    `https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=3`
+  ).done(function (data) {
+    $("result9").html(
+      //data.map 형태로 map 내부 변수 이름은 photo 를 이용해서
+
+      //select 선택을 진행 할떄 fiflter 를 사용해라 만날수 있음 
+      // 주소값에서 작성된 모든 데이터를 조회할떄는 
+      // fiflter 를 굳이 사용하지 않아도 됨~
+      data
+        //.filter((photo) => (photo.albumId = albumId))
+        .map(
+          (photo) =>
+            `<strong>${photo.title}</strong>
+            <p>${photo.ul}</p>
+        `
+        )
+        // title url 을 
+        // title url <strong>${title }</strong>
+      // <p>${ul }</p>
     );
   });
 }
