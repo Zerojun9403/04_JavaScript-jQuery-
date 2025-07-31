@@ -35,15 +35,13 @@ function range(start, end) {
     .keys() ": 키들의 값으로 숫자를 널겠다. 배열은 0부터 시작[0 ,1 ,2,.... ,7 ,8 ,9]
     .map((i) => i + start); : 시작값 더하기 
             포켓몬 사이트는 0이 존재하지 않고 1부터 시작하기 떄문에 
-            베열은 0이지만 0번째에 https://pokeapi.co/api/v2/pokemon/${i}
+            베열은 0이지만 0번째에 https://pokeapi.co/api/v2/pokemon/1
     
     
     
     
     */
-  return [...Array(end - start + 1).keys()].map(
-    
-    (i) => i + start);
+  return [...Array(end - start + 1).keys()].map((i) => i + start);
 }
 
 function pokeInfo(page) {
