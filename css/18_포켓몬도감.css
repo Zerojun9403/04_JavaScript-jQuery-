@@ -109,6 +109,11 @@ button:hover {
   padding: 5px;
 }
 
+.pageInfo {
+  display: flex;
+  text-align: center;
+  color: #6b6b6b;
+}
 .stat-value {
   font-weight: bold;
   color: #007bff;
