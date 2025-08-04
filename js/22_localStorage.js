@@ -68,6 +68,20 @@ function singUp(e) {
   localStorage.setItem("userPw", userPw);
 
   // 모두 자정하고 나서 결과 페이지 이동
+  // window  = Javascript 에서 모든 객체의 최상위 부모
+  // window 내부에 document 와 location, history 와 같은 객체 존재
+  // window.document <= 같이 작성이 원칙
+
+  // window 내 컴퓨터에서 . 현재위치에서  .주소가. 링크로 되어있는 = 로이동
+  /**
+   * window  =  실질적으로 자바스크립트 내의 모든 ~~~예약어를 지닌 존재
+   * window.alert / window.document  로 사용하는 것이 맞으나 사용빈도가 높은경우 window. 생략가능
+   *
+   * location  = 현재 페이지의 URL 정보를 담은 객체
+   * location.reload() : 페이지 새로고침
+   * location.href =  현제페이지에서 ~~~ 로 이동
+   *
+   */
   window.location.href = "22_result.html";
 }
 

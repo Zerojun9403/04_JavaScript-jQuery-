@@ -9,22 +9,18 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="../css/22_userLis.css" />
+    <link rel="stylesheet" href="../css/23_제품목록.css" />
     <link rel="icon" type="image/png" href="../img/logo.png" />
   </head>
   <body>
     <div class="container">
-      <h2>회원리스트</h2>
-      <div class="user-list" id="user-list">
-        <div class="no-users">등록된 회원이 없습니다.</div>
+      <h2>상품 목록</h2>
+      <div class="product-grid" id="product-grid">
+        <p class="no-items">등록된 상품이 없습니다.</p>
       </div>
-
-      <div class="buttons">
-        <a href="javascript:hisory.back()">뒤로가기</a>
-        <a href="22_localStorage.html">회원가입</a>
-        <a href="#" id="clear-all">모든 회원 데이터 삭제</a>
-      </div>
+      <a href="23_제품등록.html" class="back-btn">상품 추가하기</a>
     </div>
-    <script src="../js/22_userList.js"></script>
+    <a href="#" id="delete_btn"> 모든 제품 삭제하기</a>
+    <script src="../js/23_제품목록.js"></script>
   </body>
 </html>

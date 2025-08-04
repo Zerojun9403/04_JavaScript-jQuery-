@@ -1,5 +1,6 @@
 $(function () {
   showUsers();
+  $("#clear-all").click(deleteprodects);
 });
 
 function showUsers() {
@@ -23,4 +24,17 @@ function showUsers() {
     `
   );
   $("#user-list").html(userHTML);
+}
+function deleteprodects(e) {
+  e.preventDefault(); // a의href 로 이동 하는 기본 동작방지
+
+  //사용자에게 정말 삭제할 것인지 최종확인 !!
+  if (confirm("정말 모든 목록을 삭제하시겠습니까?"))
+    //confitm 에서 확인을 눌렀을 경우
+    // localStorage 에 productList 에 데이터만 제거
+    localStorage.removeItem("userList");
+
+  // 화면을 f5(새로고침) 하여 변경사항을 반영
+  alert("모든목록이 삭제 되었습니다. ");
+  location.reload(); //  현재 페이지 새로고침 window. 생략가능
 }
