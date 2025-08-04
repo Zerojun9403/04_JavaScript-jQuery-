@@ -2,7 +2,7 @@ $(function () {
   $(a).click(singUp);
 });
 
-function singUp() {
+function singUp(e) {
   e.preventDefault(); // 기본 링크 동작 방지
   // 제출하기 일시 정지 상태로
   // 아래 정규식, 데이터 저장 여부등과 같은 규정을
