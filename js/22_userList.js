@@ -1,0 +1,37 @@
+$(function () {
+  showUsers();
+});
+
+function showUsers() {
+  // localStorage 에서 모든 데이터를 담을 수 있는 리스트 변수 이름 생성
+  const users = []; // localStorage에 저장된 정보를 목록형태로 users 내부에 담아둘 것
+
+  //username, userpw 가 있으면 배열에 추가
+
+  const username = localStorage.getItem("username");
+  const userpw = localStorage.getItem("userPw");
+
+  if (username && userpw) {
+    users.push({
+      id: username,
+      pw: userpw,
+    });
+  }
+
+  // 사용자 총 회원표시 users.length
+
+  // 사용자가 없으면 users.length === 0 no-users 볼 수 있음!
+
+  //map 사용해서 HTML 로 소비자 유저 리스트 목록을 확인 할수 있도로고 설정
+
+  const userHTML = users.map(
+    (u) =>
+      `
+    <div class="user-item">
+        <div class="user-id"> 아이디 : ${u.id}</div>
+        <div class="user-id"> 아이디 : ${u.pw}</div>
+    </div>
+    `
+  );
+  $("#user-list").html(userHTML);
+}
