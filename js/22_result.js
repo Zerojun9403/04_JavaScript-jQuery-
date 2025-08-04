@@ -2,7 +2,7 @@ $(function () {
   //localStorage 에서 데이터 가져오기
   // setItem 안에서 (" "," ") 첫번쨰 큰 따옴표 내부에 있는 명칭 그대로 작성!1
   const username = localStorage.getItem("userName");
-  const userpw = localStorage.getItem("userpw");
+  const userPw = localStorage.getItem("userPw");
   //데이터가 있으면 표스
 
   if (username) {
@@ -10,8 +10,8 @@ $(function () {
   } else {
     $("#result-id").text("회원가입에서 작성한 아이디를 찾을 수 없습니다. ");
   }
-  if (userpw) {
-    $("#result-pw").text(userpw);
+  if (userPw) {
+    $("#result-pw").text(userPw);
   } else {
     $("#result-pw").text("회원가입에서 작성한 비밀번호를 찾을 수 없습니다. ");
   }
