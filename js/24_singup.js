@@ -21,7 +21,7 @@ $(function () {
     const top = (window.screen.height - popupHeight) / 2;
     const options = `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`;
 
-    window.open("24_emailCheck.html", "emailCheckPopup", options);
+    window.open("24_emailCheck.html", "_blank", options);
   });
 
   // 회원가입 제출

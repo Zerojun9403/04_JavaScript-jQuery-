@@ -39,6 +39,26 @@ function addFoodData(e) {
 
 function searchFoodData(e) {
   e.preventDefault();
+  const searchValue = $("#searchValue").val().trim();
+  let foodList = JSON.parse(localStorage.getItem("foodList") || "[]");
+  //검색결과 존재할 경우 보여주기
+  const searchFoodDatas = foodList.filter(
+    (food) => food.foodName === searchValue
+  );
+  let html = "";
+  if (searchFoodDatas.length > 0) {
+    html += searchFoodDatas
+      .map(
+        (f) =>
+          ` <div class="item-row">
+           ${f.foodName}<br>
+        
+     </div>`
+      )
+      .join("");
+  }
+
+  $("#searchResult").html(html).show();
 }
 
 function showAllFoodData(e) {
