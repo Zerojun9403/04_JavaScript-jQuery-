@@ -1,6 +1,8 @@
 $(function () {
   $("#saveData").click(saveDataFn);
   $("#gatBtn").click(getDataFn);
+  $("#showAllBtn").click(showAllDataFn);
+  $("#clearAllBtn").click(clearAllDataFn);
 });
 
 //크롬이나 엣지등 브라우저에서 F12 클릭
@@ -8,7 +10,6 @@ $(function () {
 //해당하는 URL주소를 클릭하여 내부에서 저장된 key값을 확인가능
 // 키 값은 문자열로 무조건 되어있음
 // " " 가 없다하여 문자열이 아닌 것이 아니라 생략상태!!!
-
 
 //  인터넷 창에서 크롬일 경우 chrome://version 입력
 //  프로필 경로	C:\Users\영준\AppData\Local\Google\Chrome\User Data\Default
@@ -44,10 +45,10 @@ function getDataFn(e) {
 
   //.getItem(): 기능 내부에 키를 활용해서 값을 가져온다.
   // 깂을 가져오는 위치는 크롬에서 기본적으로 저장하는 위치
-   const getValue = localStorage.getItem(inputKey);
+  const getValue = localStorage.getItem(inputKey);
 
   // 가져온 결과를 표시하자!
-  
+
   $("#getResult").html(
     `
     
@@ -57,4 +58,39 @@ function getDataFn(e) {
         
     `
   );
+}
+
+// key의 이름을 가져올때는 index 번호를 활용해서 0번째 존재하는 key  명칭을 가져온다
+// 가지고 온 키의 명칭을 활용해서 값을 가져올 수 있다.
+// getkey = index 번호
+// getvalue = key의 명칭
+
+// set 저장할 때는 순차적으로 0번부터 저장
+
+// for문 보다 로컬스토리지에 리스트목록을 저장하는 것이 메모리 활용적
+// 로컬스토리지에 데이터를 저장할 때 베열, 리스트 형태로 저장
+function showAllDataFn(e) {
+  e.preventDefault();
+  let html = `<h3>크롬 브러우저에 저장된 데이터들 확인</h3><ul>`;
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+
+    html += `
+                <li>
+                <strong>${key}</strong>:
+                ${localStorage.getItem(key)}
+                </li>
+            `;
+  }
+  html += "</ul>";
+
+  $("#allData").html(html);
+}
+
+function clearAllDataFn(e) {
+  e.preventDefault();
+  if (confirm("정말로 모든 데이터를 삭제하시겠습니까?")) {
+    localStorage.clear(); // .clear() 로컬스토리지 내 모든데이터 삭제
+  }
+  showAllDataFn();
 }
