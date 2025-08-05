@@ -51,22 +51,22 @@ function showAllFoodData(e) {
    *if(e).preventDefault();
    *  클릭거ㅣ 깉은 동작이 들어왔을때 태그 속석을 멈추기위하여 설정
    *  if로 e.preventDefault()를 감싸주지 않는다면
-   * 지금과 같이 
-   * 페이지 로딩하고, 데이터를 모두 보기한 성태에서 
-   * undefined.preventDefault() 기 되어 문제가 밣생하므로 
+   * 지금과 같이
+   * 페이지 로딩하고, 데이터를 모두 보기한 성태에서
+   * undefined.preventDefault() 기 되어 문제가 밣생하므로
    *아래 기능을 수행하지 못함.
    *
    *
    *
    *
    */
-
-  e.preventDefault();
+  if (e) e.preventDefault();
   // 순서를 지키지 않으면 loading 에서 특정 행위나 이벤트가 없을때는
   // 내부 에러로 인하여 데이터가 보이지 않을수 있다.
   // 그래서 변수를 선언하고 선언된 변수 이름을 사용할때 반드시 순서를 지킬 것
   let foodList = JSON.parse(localStorage.getItem("foodList") || "[]");
-  let html = `<h3>저장된음식목록(총 ${foodList.length}개)</h3>`;
+  let html = `<h3>🍽️ 저장된 음식 목록 (총 ${foodList.length}개)</h3>`;
+
   //for문 사용회되, userList 값을 모두 [i] 로 가져올것
   for (let i = 0; i < foodList.length; i++) {
     html += `
