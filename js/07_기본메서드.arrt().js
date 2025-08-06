@@ -1,4 +1,5 @@
 $(function () {
+  $(".attrDiv").attr("style", "margin-top:10px");
   $("#changeImage").click(imgFn);
   $("#changeAlt").click(altFn);
   $("#changeLink").click(linkFn);
@@ -28,6 +29,9 @@ function disInputFn(e) {
   e.preventDefault();
   //$("#textInput").attr("disabled", "disabled");
   //$("#textInput").attr("disabled",true);
+  //$("#textInput").attr("disabled", "");
+  //$("#textInput").attr("disabled", "");
+  //$("#textInput").addClass("disabled"); => 사용가능
   $("#textInput").attr("disabled", "").addClass("disabled");
 }
 function enInputFn(e) {
