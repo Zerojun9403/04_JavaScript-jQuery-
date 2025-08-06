@@ -31,9 +31,7 @@ function displayMovies(movies) {
                         <p><strong>감독:</strong> ${movie.director}</p>
                         <p><strong>제작자:</strong> ${movie.producer}</p>
                         <p>
-                        <span class="detail-link" onclick="goToDetail('${
-                          movie.Id
-                        }')">
+                        <span class="detail-link" onclick="goToDetail('${movie.id}')">
                         ${movie.description.substring(0, 10) + "...상세보기"}
                         </span>
                         </p>
@@ -54,19 +52,17 @@ function goToSignup() {
 }
 
 function goToDetail(movieId) {
-  /**
-   *
-   *
-   * http://127.0.0.1:5500/index.html ?key=value
-   * ?뒤에 매개변수로 전달받은 값을 detail.html 에 전달하겠다.
-   *
-   * detail.html 로 들어가면 -> 상세페이지에서 표시할 내용이 존재하지 않습니다.
-   *
-   * detail.html?id=id에 해당하는 값을 작성하면
-   * 해당 데이터를 detail에서 불러올 수 있음
-   *
-   *
-   *
-   */
+/*
+http://127.0.0.1:5500/index.html ?key=value
+     * ?뒤에 매개변수로 전달받은 값을 detail.html 에 전달하겠다.
+     *
+     * detail.html 로 들어가면 -> 상세페이지에서 표시할 내용이 존재하지 않습니다.
+     *
+     * detail.html?id=id에 해당하는 값을 작성하면
+     * 해당 데이터를 detail에서 불러올 수 있음
+     
+     
+     
+*/    
   window.location.href = `detail.html?id=${movieId}`;
 }

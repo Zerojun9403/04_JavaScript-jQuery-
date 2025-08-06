@@ -24,14 +24,37 @@ $(function () {
   loadMoviesDetail(전달받은id확인);
 });
 
-function loadMoviesDetail() {
+function loadMoviesDetail(전달받은id확인) {
   // id로 전달한 고유id를 확인해서 상세보기창으로 이동 가능
-  $.get(`https://ghibliapi.vercel.app/films/${전달받은id확인}`)
-  .done(function (data) {
+  $.get(`https://ghibliapi.vercel.app/films/${전달받은id확인}`).done(function (
+    data
+  ) {
+    $(".loading").hide();
     무비상세보기(data);
   });
 }
 
 function 무비상세보기(movie) {
+  $("#movieDetail").show();
+  /**
+  .attr(): HTML 요소의 속성을 조작하는 기능(메서드)
+
+   //속성 
+   $().attr('속성명')
+
+   //속성 값 설정하기
+   $().attr('속성명','값')
+
+   //여러 속성 동시 설정
+   $(선택자).attr('속성명1','값1').attr('속성명2','값2') 
+   
+   */
+  $("#moviePoster").attr("src", movie.image);
   $("#movieTitle").text(movie.title);
+  $("#movieYear").text(movie.release_data + "년");
+  $("#movieDirector").text(movie.title);
+  $("#movieProducer").text(movie.director);
+  $("#movieRelease").text(movie.Release);
+  $("#movieRuntime").text(movie.release_data);
+  $("#movieDescription").text(movie.description);
 }
